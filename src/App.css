@@ -41,3 +41,8 @@ p {
 .mn > ion-icon {
   color: blue;
 }
+.flexCont{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

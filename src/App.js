@@ -7,11 +7,12 @@ import {usePosition} from 'use-position';
 function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [metric, setMetric] = useState(true);
   const { latitude, longitude, error } = usePosition(true, {enableHighAccuracy: true});
 
 
   useEffect(() => {
-    if(latitude && longitude && !error){
+    if(!data && latitude && longitude && !error){
       setLoading(true);
       fetch(BASE_URL + `&lat=${latitude}&lon=${longitude}` + API_KEY)
       .then(response => response.json())
@@ -20,20 +21,31 @@ function App() {
                       setData(resp);
                       setLoading(false)});
     };
-  }, [latitude, longitude, error]);
+  }, [metric, latitude, longitude, error]);
 
   const renderContent = () =>{
     if(error)
       return (<h2 className="center">{error}</h2>);
     if(!data && loading)
       return (<h2 className="center">LOADING...</h2>);
-    return (<CardList weathers={data.daily} />);
+    return (<CardList metric={metric} weathers={data.daily} />);
   }
 
+  const renderUnit = () => {
+    if(metric){
+      return (<a onClick={()=>setMetric(false)} className="center"><strong>°C</strong>|°F</a>)
+    }
+    else{
+      return (<a onClick={()=>setMetric(true)} className="center">°C|<strong>°F</strong></a>)
+    }
+
+  }
   return (
     <div className="App">
-      <p className="title center">Weather App</p>
-  
+      <div className="flexCont">
+        <p className="title center">Weather App</p>
+              {renderUnit()}
+      </div>
       {renderContent()}
     </div>);
 }

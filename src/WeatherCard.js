@@ -30,8 +30,8 @@ const WeatherCard = ({day, mnTemp, mxTemp, weather, icon}) => {
 			<div className="card">
 				<p className="center">{weekDay}</p>
 				<img src={icon} title={weather} alt={weather}/>
-				<p className="center mx">{mxTemp}°C<ion-icon name="chevron-up-outline"></ion-icon></p>
-				<p className="center mn">{mnTemp}°C<ion-icon name="chevron-down-outline"></ion-icon></p>	 
+				<p className="center mx">{mxTemp}<ion-icon name="chevron-up-outline"></ion-icon></p>
+				<p className="center mn">{mnTemp}<ion-icon name="chevron-down-outline"></ion-icon></p>	 
 			</div>
 			);
 };
