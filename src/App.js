@@ -33,10 +33,10 @@ function App() {
 
   const renderUnit = () => {
     if(metric){
-      return (<a onClick={()=>setMetric(false)} className="center"><strong>°C</strong>|°F</a>)
+      return (<button onClick={()=>setMetric(false)} className="unitButton"><strong>°C</strong>|°F</button>)
     }
     else{
-      return (<a onClick={()=>setMetric(true)} className="center">°C|<strong>°F</strong></a>)
+      return (<button onClick={()=>setMetric(true)} className="unitButton">°C|<strong>°F</strong></button>)
     }
 
   }

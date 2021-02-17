@@ -46,3 +46,11 @@ p {
 	flex-direction: column;
 	justify-content: center;
 }
+.unitButton{
+	cursor: pointer;
+	border: 1px solid;
+	border-radius: 10px;
+	background: none;
+	margin: 0 auto;
+	width: 5%;
+}
